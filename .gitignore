@@ -1,0 +1,8 @@
+.vscode/
+
+test/
+.test*/
+test*.ts
+
+.env
+.env.*
