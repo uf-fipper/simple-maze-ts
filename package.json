@@ -1,0 +1,30 @@
+{
+  "name": "maze",
+  "version": "1.0.0",
+  "description": "a simple maze",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uf-fipper/simple-maze-ts.git"
+  },
+  "keywords": [
+    "maze"
+  ],
+  "author": "fish",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uf-fipper/simple-maze-ts/issues"
+  },
+  "homepage": "https://github.com/uf-fipper/simple-maze-ts#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "@typescript-eslint/parser": "^5.33.0",
+    "eslint": "^8.21.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-react": "^7.30.1"
+  }
+}
