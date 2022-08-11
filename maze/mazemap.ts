@@ -135,7 +135,7 @@ export class MazeMap implements Iterable<MapValue[]> {
     this.column = column;
     this.map = Array(row)
       .fill(column)
-      .map((i, _) => Array(column).fill(MapValue.wall));
+      .map(() => Array(column).fill(MapValue.wall));
     this.inst_st = Point.zero;
     this.st = Point.zero;
     this.ed = Point.zero;
@@ -180,7 +180,7 @@ export class MazeMap implements Iterable<MapValue[]> {
      */
     const map_temp: (Point | null)[][] = Array(this.row)
       .fill(this.column)
-      .map((i, _) => Array(this.column).fill(null));
+      .map(() => Array(this.column).fill(null));
     let p = pos;
     let lp: Point | null = null;
     let step = 0;
