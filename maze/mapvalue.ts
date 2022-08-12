@@ -7,7 +7,7 @@ export class MapValue {
   /** 墙 */
   static wall = new MapValue("O");
   /** 路 */
-  static road = new MapValue(".");
+  static road = new MapValue(" ");
   /** 边界 */
   static border = new MapValue("X");
   /** 起点 */

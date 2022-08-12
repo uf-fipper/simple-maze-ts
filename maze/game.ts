@@ -55,30 +55,32 @@ export class Game {
   /**
    * 移动
    * @param move 移动方向
+   * @param afterMove 每次移动一格时会调用该函数 p: 这个格子的点，返回false将不再进行自动寻路
    * @returns 是否移动成功
    */
-  move(move: MoveStatus) {
-    if (this.is_win()) return false;
+  move(move: MoveStatus, afterMove?: (p: Point) => boolean): Point[] {
+    if (this.is_win()) return [];
     let lp = this.player.pos;
     let p = move.get_next(lp);
 
-    if (this.map.is_overrange(p)) return false;
-    if (this.map.getitem(p).equals_to(MapValue.wall)) return false;
+    if (this.map.is_overrange(p)) return [];
+    if (this.map.getitem(p).equals_to(MapValue.wall)) return [];
 
-    const move_list = [lp, p];
+    const moveList = [lp, p];
     let next_road = this._move_find_road(p, lp);
     while (next_road != null && !p.equal_to(this.map.ed)) {
       lp = p;
       p = next_road;
-      move_list.push(p);
+      if (afterMove !== undefined && afterMove(p)) break;
+      moveList.push(p);
       next_road = this._move_find_road(p, lp);
     }
 
-    this.player.pos = move_list[move_list.length - 1];
+    this.player.pos = moveList[moveList.length - 1];
     this.is_move = true;
-    this.player.step += move_list.length - 1;
+    this.player.step += moveList.length - 1;
     this.player.move_times++;
-    return true;
+    return moveList;
   }
 
   move_player(pos: Point) {
