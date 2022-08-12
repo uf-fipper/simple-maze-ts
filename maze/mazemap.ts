@@ -102,13 +102,13 @@ export class MazeMap implements Iterable<MapValue[]> {
     for (let i = 0; i < this.row; ++i) {
       for (let j = 0; j < this.column; ++j) {
         if (st_get && ed_get) return;
-        if (!st_get && this.getitem(i, j) == MapValue.road) {
+        if (!st_get && this.getitem(i, j).equals_to(MapValue.road)) {
           this.st = new Point(i, j);
           this.setitem(this.st, MapValue.st);
           st_get = true;
         }
         const ed_idx = new Point(this.row - 1 - i, this.column - 1 - j);
-        if (!ed_get && this.getitem(ed_idx) == MapValue.road) {
+        if (!ed_get && this.getitem(ed_idx).equals_to(MapValue.road)) {
           this.ed = ed_idx;
           this.setitem(this.ed, MapValue.ed);
           ed_get = true;
@@ -156,7 +156,7 @@ export class MazeMap implements Iterable<MapValue[]> {
       if (this.is_overrange(_p)) continue;
       const idx = map_temp[_p.x][_p.y];
       if (idx != null) continue;
-      if (this.getitem(_p) == MapValue.wall) continue;
+      if (this.getitem(_p).equals_to(MapValue.wall)) continue;
       res.push(_p);
     }
 

@@ -45,7 +45,7 @@ export class Game {
     for (const _p of p.get_range()) {
       if (this.map.is_overrange(_p)) continue;
       if (_p.equal_to(lp)) continue;
-      if (this.map.getitem(_p) == MapValue.wall) continue;
+      if (this.map.getitem(_p).equals_to(MapValue.wall)) continue;
       if (res != null) return null;
       res = _p;
     }
@@ -63,7 +63,7 @@ export class Game {
     let p = move.get_next(lp);
 
     if (this.map.is_overrange(p)) return false;
-    if (this.map.getitem(p) == MapValue.wall) return false;
+    if (this.map.getitem(p).equals_to(MapValue.wall)) return false;
 
     const move_list = [lp, p];
     let next_road = this._move_find_road(p, lp);
